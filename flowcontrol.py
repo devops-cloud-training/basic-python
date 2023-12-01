@@ -76,3 +76,15 @@ while start <= values:
     start += 2
 else: 
     print("Loop ended")
+
+print("==================================================")
+
+# greetings = "hello"
+# print(f"{greetings} azhar")
+
+for i in range(100):
+    if i == 50:
+        # break
+        continue
+    print(i)
+

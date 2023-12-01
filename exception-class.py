@@ -1,0 +1,35 @@
+
+try:
+    thirdText = open("newfile.txt",'r')
+    thirdcontent = "Hello guys 1234565"
+    thirdText.write(thirdcontent)
+    print(thirdText.tell())
+    thirdText.seek(0)
+    mytext = thirdText.read()
+    mytext = "Writing in first position"+mytext
+    thirdText.write(mytext)
+    print("-------------------------------------")
+    print(thirdText.read())
+except:
+    print("There is an issue in file operation. Please report")
+
+thirdText.close()
+
+try:
+    mytextlines = open("newfile4534.txt",'r')
+
+    print(len(mytextlines.readlines()))
+except FileNotFoundError:
+    print("The file is not found")
+
+
+try:
+    a =10
+    b=0
+    print(a/b)
+except ZeroDivisionError:
+    print("There is zero division error, the denominator is zero")
+except:
+    print("There are some other issues")
+
+print(dir(locals()['__builtins__']))
