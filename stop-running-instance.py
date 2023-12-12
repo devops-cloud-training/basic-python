@@ -23,32 +23,32 @@ ec2_client = boto3.client("ec2")
 # ec2.instances.filter(InstanceIds=instance_list).terminate()
 
 
-# instanceIds_using_resource=ec2.instances.filter(
-#     Filters = [{
-#         "Name": "instance-state-name",
-#         "Values": ["running"]
-#     }]
-# )
-# running_instance_id=[]
-# for i in instanceIds_using_resource:
-#     print(i.id)
-#     running_instance_id.append(i.id)
+instanceIds_using_resource=ec2.instances.filter(
+    Filters = [{
+        "Name": "instance-state-name",
+        "Values": ["stopped"]
+    }]
+)
+running_instance_id=[]
+for i in instanceIds_using_resource:
+    print(dir(i))
+    # running_instance_id.append(i.id)
 
 # print(running_instance_id)
 # ec2.instances.filter(InstanceIds=running_instance_id).terminate()
 
-running_inst_id_using_client=ec2_client.describe_instances(
-    Filters = [{
-        "Name": "instance-state-name",
-        "Values": ["running"]
-    }]
-)["Reservations"][0]["Instances"]
+# running_inst_id_using_client=ec2_client.describe_instances(
+#     Filters = [{
+#         "Name": "instance-state-name",
+#         "Values": ["running"]
+#     }]
+# )["Reservations"][0]["Instances"]
 
-# print(running_inst_id_using_client[0]["InstanceId"])
-# print(running_inst_id_using_client[1]["InstanceId"])
-instanceId_from_client=[]
-for i in range(len(running_inst_id_using_client)):
-    instanceId_from_client.append(running_inst_id_using_client[i]["InstanceId"])
+# # print(running_inst_id_using_client[0]["InstanceId"])
+# # print(running_inst_id_using_client[1]["InstanceId"])
+# instanceId_from_client=[]
+# for i in range(len(running_inst_id_using_client)):
+#     instanceId_from_client.append(running_inst_id_using_client[i]["InstanceId"])
 
-print(instanceId_from_client)
-print(ec2.instances.filter(InstanceIds=instanceId_from_client).terminate())
+# print(instanceId_from_client)
+# print(ec2.instances.filter(InstanceIds=instanceId_from_client).terminate())
